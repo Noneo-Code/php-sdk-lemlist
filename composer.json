@@ -1,0 +1,60 @@
+{
+    "name": "noneo/sdk-lemlist",
+    "description": "SDK pour l'accès à l'API lemlist",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Noneo\\Sdk\\Lemlist\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Noneo\\Sdk\\Lemlist\\Generator\\": "generator/",
+            "Noneo\\Sdk\\Lemlist\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Valentin Goulier",
+            "email": "valentin.goulier@noneo.fr"
+        },
+        {
+            "name": "Noneo",
+            "email": "contact@noneo.fr"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "ext-mbstring": "*",
+        "psr/simple-cache": "^3.0",
+        "saloonphp/rate-limit-plugin": "^2",
+        "saloonphp/saloon": "^4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^11.0"
+    },
+    "suggest": {
+        "phpunit/phpunit": "Nécessaire aux assertions de Noneo\\Sdk\\Lemlist\\Testing\\MockLemlist (^11)"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse --memory-limit=1G",
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "generate": "php bin/generate.php",
+        "check": [
+            "@test",
+            "@stan",
+            "@cs"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Suite unitaire : ni réseau, ni clé d'API.",
+        "generate": "Régénère requêtes, ressources et DTO depuis lemlist-api-v2.json."
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Noneo\Sdk\Lemlist\Requests\Senders;
+
+use Noneo\Sdk\Lemlist\Support\Payload;
+use Saloon\Contracts\Body\HasBody;
+use Saloon\Enums\Method;
+use Saloon\Http\Request;
+use Saloon\Traits\Body\HasJsonBody;
+
+/**
+ * Replace Campaign Sender Exclusions — `PUT /campaigns/{campaignId}/dynamic-sender-exclusions`.
+ *
+ * Fichier généré par `composer generate` : toute modification manuelle sera écrasée.
+ *
+ * @internal
+ */
+final class ReplaceCampaignSenderExclusions extends Request implements HasBody
+{
+    use HasJsonBody;
+
+    protected Method $method = Method::PUT;
+
+    /**
+     * @param list<array<string, mixed>> $senders
+     */
+    public function __construct(
+        private readonly string $campaignId,
+        private readonly array $senders,
+    ) {
+    }
+
+    public function resolveEndpoint(): string
+    {
+        return '/campaigns/'.rawurlencode($this->campaignId).'/dynamic-sender-exclusions';
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function defaultBody(): array
+    {
+        return Payload::body([
+            'senders' => $this->senders,
+        ]);
+    }
+}

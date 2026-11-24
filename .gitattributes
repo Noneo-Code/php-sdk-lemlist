@@ -1,0 +1,11 @@
+# Ce qui n'a pas à voyager dans l'archive Composer : la spec OpenAPI pèse à
+# elle seule près de 2 Mo, et le générateur est un outil de développement.
+/tests                 export-ignore
+/bin                   export-ignore
+/generator             export-ignore
+/lemlist-api-v2.json   export-ignore
+/phpunit.xml           export-ignore
+/phpstan.neon          export-ignore
+/.php-cs-fixer.php     export-ignore
+/.gitattributes        export-ignore
+/.gitignore            export-ignore
